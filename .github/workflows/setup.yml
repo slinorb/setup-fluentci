@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Force updating code
-        run: git pull origin master
+        run: git pull origin main
       - name: Setup FluentCI
         uses: ./
       - name: Verify FluentCI
