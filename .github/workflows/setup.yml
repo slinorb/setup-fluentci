@@ -12,11 +12,9 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - name: Force updating code
-        run: git pull origin main
+      - uses: actions/checkout@v3
       - name: Setup FluentCI
         uses: ./
       - name: Verify FluentCI

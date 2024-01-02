@@ -10,15 +10,13 @@ export async function installDocker() {
         ]);
         return;
     }
+
     if (platform === "darwin") {
-        // await exec("brew", ["update"]);
-        await exec("sh", ["-c", "brew install docker lima"]);
-        await exec("sh", ["-c", "limactl start template://docker"]);
-        await exec("sh", [
-            "-c",
-            'docker context create lima-docker --docker "host=unix:///Users/runner/.lima/docker/sock/docker.sock"',
-        ]);
-        await exec("sh", ["-c", "docker context use lima-docker"]);
+        await exec("brew", ["update"]);
+        await exec("sh", ["-c", "brew install docker orbstack"]);
+        await exec("sh", ["-c", "orb config set setup.use_admin false"]);
+        await exec("sh", ["-c", "orb stop"]);
+        await exec("sh", ["-c", "orb start"]);
         return;
     }
 }
